@@ -1,6 +1,6 @@
 class Produce: 
 
-    def __init__(self producetype, daysuntilexpiration): 
+    def __init__(self.producetype, daysuntilexpiration): 
         self.producetype = producetype; 
         self.daysuntilexpiration = daysuntilexpiration; 
         
