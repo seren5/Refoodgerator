@@ -1,19 +1,11 @@
 def user_food():
     food_item = input("Please input the food item you'd like to store in lowercase and non-plural (Check your spelling! Our varieties are limited to the general categories, such as cabbage) ")
-    other_items(food_item)
-#     if is_vegetable(food_item):
-        
-#     is_fruit(food_item)
-
-# def is_vegetable(item):
-#     vegetable_list = [artichoke, asparagus, eggplant, avocado, beet, bok choy, broccoli, brussels sprout, cabbage, carrot]
-#     aubergine == eggplant
-
-# def is_fruit(item):
-#     fruit = []
+    expiry_time(food_item)
+    return food_item
 
 
-def other_items(item):
+
+def expiry_time(item):
     exit_menu = False
     while not exit_menu:
         expiry_year = input("Please input the expiration year (in numbers) of the food item: ")
@@ -29,31 +21,14 @@ def other_items(item):
 
     expiry_year = int(expiry_year)
 
-    # exit_menu1 = False
-    # while not exit_menu1:
-    #     leap_year = input("Y/N Is this year a leap year? ")
-    #     if "Y" in leap_year or "y" in leap_year:
-    #         expiry_year_days = 366*expiry_year
-    #         feb_days = 29
-    #         exit_menu = True
-    #     elif "N" in leap_year or "n" in leap_year:
-    #         expiry_year_days = 365*expiry_year
-    #         feb_days = 28
-    #         exit_menu = True
-    #     elif not "Y" in leap_year or "y" in leap_year or "N" in leap_year or "n" in leap_year:
-    #         print("Please input either Y/N. ")
-    #         continue
-    #     exit_menu1 = True
-
-    
-    expiry_year = int(expiry_year)
-
     if expiry_year % 4 == 0 or expiry_year % 400 == 0:
-         expiry_year_days = ((expiry_year)/4)*366 + (3*(expiry_year)/4)*365
-         feb_days = 29
+        expiry_year = expiry_year-2000
+        expiry_year_days = ((expiry_year)/4)*366 + (3*(expiry_year)/4)*365
+        feb_days = 29
     else:
-         expiry_year_days = ((expiry_year)/4)*366 + (3*(expiry_year)/4)*365
-         feb_days = 28
+        expiry_year = expiry_year-2000
+        expiry_year_days = ((expiry_year)/4)*366 + (3*(expiry_year)/4)*365
+        feb_days = 28
 
     jan_days = 31
     mar_days = 31
@@ -126,8 +101,10 @@ def other_items(item):
     this_day_days = int(this_day)
     
     if this_year % 400 == 0 or this_year % 4 == 0:
+        this_year = this_year - 2000
         this_year_days = ((this_year)/4)*366 + (3*(this_year)/4)*365
     else:
+        this_year = this_year - 2000
         this_year_days = ((this_year)/4)*366 + (3*(this_year)/4)*365
    
     if "1" in this_month:
@@ -157,8 +134,9 @@ def other_items(item):
 
     today_in_days = this_year_days + this_month_days + this_day_days
 
-    days_until_expiry = int(days_expiry - today_in_days - 66)
+    days_until_expiry = int(days_expiry - today_in_days - 303.25)
 
     print(f"{days_until_expiry} days until expiration.")
+    return days_until_expiry
 
 user_food()
